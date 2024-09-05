@@ -1,22 +1,23 @@
-package com.example.jpa.domain.repository.memberRepository;
+package com.example.jpa.domain.repository;
 
 import com.example.jpa.domain.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.PersistenceUnit;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
-
-    @PersistenceContext //엔티티 매니저 주입!!
-    private EntityManager em;
-
-//    @PersistenceUnit 엔티티매니저팩토리 주입!!
+    private final EntityManager em;
+//    @PersistenceUnit //엔티티매니저팩토리 주입!!
 //    private EntityManagerFactory emf;
+
+
     public void save(Member member){
         em.persist(member);
     }
